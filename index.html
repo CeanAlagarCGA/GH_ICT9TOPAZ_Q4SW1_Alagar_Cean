@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>seatwork 1</title>
+
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background-image: url("https://www.sagatraining.ca/wp-content/uploads/2018/10/background-images-for-login-form-8.jpg");
+    background-size: cover;        
+    background-position: center;   
+    background-repeat: no-repeat;  
+    background-attachment: fixed;  
+    display: flex;
+    flex-direction: column;
+}
+
+        .logo {
+            font-size: 30px;
+            font-weight: 700;
+            color: #fffb0b;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-bottom: 3px solid lch(100% 0.01 296.81);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ffcc00, #ffaa00);
+            padding: 10px 20px;
+            color: black;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.8);
+        }
+
+        .popup-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .popup-form {
+            background: rgba(20, 20, 40, 0.85);
+            padding: 40px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 200, 255, 0.2);
+            border: 2px solid rgba(0, 200, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .popup-form h2 {
+            color: #ffffff;
+            text-align: center;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 24px;
+            text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+        }
+
+        .popup-form input[type="text"],
+        .popup-form input[type="password"],
+        .popup-form select {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0 18px 0;
+            border-radius: 8px;
+            border: 2px solid rgba(0, 200, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .popup-form input[type="text"]::placeholder,
+        .popup-form input[type="password"]::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .popup-form input[type="text"]:focus,
+        .popup-form input[type="password"]:focus,
+        .popup-form select:focus {
+            outline: none;
+            border-color: rgba(0, 200, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+        }
+
+        .popup-form label {
+            font-weight: 600;
+            color: #00d4ff;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .checkbox-group {
+            margin: 18px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: #00d4ff;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: none;
+            font-size: 13px;
+            letter-spacing: normal;
+        }
+
+        #successToggle {
+            display: none;
+        }
+
+        .confirmation-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confirmation-box {
+            background: rgba(20, 20, 40, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            width: 350px;
+            border: 2px solid rgba(0, 200, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 200, 255, 0.2);
+        }
+
+        #successToggle:checked ~ .confirmation-modal {
+            display: flex;
+        }
+
+        .confirmation-box .btn {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        #profilePreview {
+            width: 250px;                  
+            height: 250px;                 
+            border-radius: 50%;           
+            object-fit: cover;
+            border: 4px solid #00d4ff;    
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); 
+            cursor: pointer;              
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
+            margin: 34px; 
+        }
+
+        #profilePreview:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+        }
+
+        
+        footer {
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="popup-container">
+    <div class="popup-form">
+        <h2>log in</h2>
+
+        <form>
+            <div class="form-group">
+            
+
+                <label>username</label>
+                <input type="text" id="input1" placeholder="Enter your username">
+
+                <label>Password</label>
+                <input type="password" id="input2" placeholder="Enter your password">
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the terms and conditions</label>
+                </div>
+                <button type="button" onclick="log_in()" style="display:block; text-align:center; width:100%; padding: 10px; background: #ffcc00; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Log in</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script src="main.js"></script>
+</body>
+</html>
